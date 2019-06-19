@@ -14,6 +14,7 @@
 		6D6F810F2279D1260052DAD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6F810E2279D1260052DAD9 /* Assets.xcassets */; };
 		6D6F81122279D1260052DAD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6F81102279D1260052DAD9 /* LaunchScreen.storyboard */; };
 		6D6F811D2279D1260052DAD9 /* captchupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6F811C2279D1260052DAD9 /* captchupTests.swift */; };
+		C75E5D41C2F5DA84D928154C /* Pods_captchup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ADBDF62EA767DA1C66F15C /* Pods_captchup.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,9 @@
 		6D6F81182279D1260052DAD9 /* captchupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = captchupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D6F811C2279D1260052DAD9 /* captchupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = captchupTests.swift; sourceTree = "<group>"; };
 		6D6F811E2279D1260052DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94ADBDF62EA767DA1C66F15C /* Pods_captchup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_captchup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		978CF154CCB51297E7A0C91F /* Pods-captchup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-captchup.release.xcconfig"; path = "Target Support Files/Pods-captchup/Pods-captchup.release.xcconfig"; sourceTree = "<group>"; };
+		B8575B98C3871AC32E1C6B65 /* Pods-captchup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-captchup.debug.xcconfig"; path = "Target Support Files/Pods-captchup/Pods-captchup.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C75E5D41C2F5DA84D928154C /* Pods_captchup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		085B88DBE954E8DF1DA5F6F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8575B98C3871AC32E1C6B65 /* Pods-captchup.debug.xcconfig */,
+				978CF154CCB51297E7A0C91F /* Pods-captchup.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6D6F80F92279D1220052DAD9 = {
 			isa = PBXGroup;
 			children = (
 				6D6F81042279D1230052DAD9 /* captchup */,
 				6D6F811B2279D1260052DAD9 /* captchupTests */,
 				6D6F81032279D1230052DAD9 /* Products */,
+				085B88DBE954E8DF1DA5F6F2 /* Pods */,
+				ED0C11495DB57A89391327BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +116,14 @@
 			path = captchupTests;
 			sourceTree = "<group>";
 		};
+		ED0C11495DB57A89391327BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94ADBDF62EA767DA1C66F15C /* Pods_captchup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D6F81212279D1260052DAD9 /* Build configuration list for PBXNativeTarget "captchup" */;
 			buildPhases = (
+				456DECDB4A9EC31017F89873 /* [CP] Check Pods Manifest.lock */,
 				6D6F80FE2279D1230052DAD9 /* Sources */,
 				6D6F80FF2279D1230052DAD9 /* Frameworks */,
 				6D6F81002279D1230052DAD9 /* Resources */,
+				D2F2E2353DC3E100FE4DB468 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,6 +221,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		456DECDB4A9EC31017F89873 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-captchup-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2F2E2353DC3E100FE4DB468 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-captchup/Pods-captchup-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-captchup/Pods-captchup-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-captchup/Pods-captchup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D6F80FE2279D1230052DAD9 /* Sources */ = {
@@ -362,6 +431,7 @@
 		};
 		6D6F81222279D1260052DAD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8575B98C3871AC32E1C6B65 /* Pods-captchup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,6 +449,7 @@
 		};
 		6D6F81232279D1260052DAD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 978CF154CCB51297E7A0C91F /* Pods-captchup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
