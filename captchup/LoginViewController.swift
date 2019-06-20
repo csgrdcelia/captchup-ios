@@ -34,13 +34,8 @@ class LoginViewController: UIViewController {
                 .validate(statusCode: 200..<300)
                 .responseData { response in switch response.result {
                 case .success(_):
-                    ApiManager.token = response.response?.allHeaderFields["Authorization"] as! String?
-                    let alert = UIAlertController(title: "Alert", message: "token : " + ApiManager.token!, preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default)
-                    alert.addAction(OKAction)
-                    self.present(alert, animated: true, completion: nil)
                     
-                    /*self.performSegue(withIdentifier: "showLoginView", sender: nil)*/
+                    self.performSegue(withIdentifier: "showTabBar", sender: nil)
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default)
