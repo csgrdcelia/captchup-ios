@@ -145,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="1374" y="360"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="Dnn-WV-iuK">
             <objects>
-                <viewController id="JFu-Uw-Mvz" sceneMemberID="viewController">
+                <viewController id="JFu-Uw-Mvz" customClass="LoginViewController" customModule="captchup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qhf-Ap-Ghm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +181,7 @@
                                     <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="zxH-p2-uhj"/>
+                                    <action selector="loginButtonClick:" destination="JFu-Uw-Mvz" eventType="touchUpInside" id="FPA-q4-znk"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot" translatesAutoresizingMaskIntoConstraints="NO" id="Xge-h5-Prw">
@@ -208,15 +208,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vVS-5h-e0U"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="RKR-UY-0H9" id="g9A-Zh-Tkt"/>
+                        <outlet property="passwordTextField" destination="FY3-vP-Hx9" id="XH8-Ue-Jwi"/>
+                        <outlet property="usernameTextField" destination="2Wj-mA-8Yx" id="quq-af-zKi"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="showTabBar" id="TKf-KE-to7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPL-pe-26U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-673" y="0.0"/>
+            <point key="canvasLocation" x="-625" y="-7"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="captchup" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -232,7 +238,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="73" y="-7"/>
         </scene>
     </scenes>
     <resources>
