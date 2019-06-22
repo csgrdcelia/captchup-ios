@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class FirstViewController: UIViewController {
-
+    
     @IBOutlet weak var label: UILabel!
     private var levels: [Level] = []
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class FirstViewController: UIViewController {
                         }
                         return level
                     }))
-                    self.label.text = self.levels.description
+                    self.label.text = self.levels[1].levelPredictions[0].prediction.word
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "Alert " + ApiManager.token!, style: .default)
@@ -48,6 +48,30 @@ class FirstViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
         }
+        
+        /*Alamofire.request(ApiManager.apiUrl + "user/1", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+         .validate(statusCode: 200..<300)
+         .responseJSON { (response) in
+         switch response.result {
+         case.success(let data):
+         guard let json = data as? [String: Any] else {
+         return
+         }
+         let user = User.from(json: json)
+         /*self.levels.append(contentsOf: json.compactMap({
+         guard let level = Level.from(json: $0) else {
+         return nil
+         }
+         return level
+         }))*/
+         self.label.text = "\(user!.id) \(user!.username)"
+         case .failure(let error):
+         let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
+         let OKAction = UIAlertAction(title: "Alert " + ApiManager.token!, style: .default)
+         alert.addAction(OKAction)
+         self.present(alert, animated: true, completion: nil)
+         }
+         }*/
     }
 }
 

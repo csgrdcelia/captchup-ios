@@ -14,14 +14,12 @@ struct LevelPrediction {
 
     static func from(json: [String: Any]) -> LevelPrediction? {
         guard
-            let predictionId = json["id"] as? Int,
-            let predictionWord = json["word"] as? String,
+            let prediction = Prediction.from(json: json["prediction"] as! [String: Any]),
             let pertinence = json["pertinence"] as? Double
             
             else {
                 return nil
         }
-        let prediction = Prediction(id: predictionId, word: predictionWord)
         return LevelPrediction(prediction: prediction, pertinence: pertinence)
     }
 }

@@ -15,7 +15,7 @@ struct Prediction {
     static func from(json: [String: Any]) -> Prediction? {
         guard
             let id = json["id"] as? Int,
-            let word = json["prediction"] as? String
+            let word = json["word"] as? String
             
             else {
                 return nil
