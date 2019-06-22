@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
                 .validate(statusCode: 200..<300)
                 .responseData { response in switch response.result {
                 case .success(_):
-                    
+                    ApiManager.token = response.response?.allHeaderFields["Authorization"] as! String?
                     self.performSegue(withIdentifier: "showTabBar", sender: nil)
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)

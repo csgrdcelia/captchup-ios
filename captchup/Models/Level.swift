@@ -17,13 +17,13 @@ struct Level {
     static func from(json: [String: Any]) -> Level? {
         guard
             let id = json["id"] as? Int,
-            let creator = json["creator"] as? User,
+            let creator = User.from(json: json["creator"] as! [String: Any]),
             let image = json["image"] as? String,
             let levelPredictions = json["levelPredictions"] as? [LevelPrediction]
             
             else {
                 return nil
         }
-        return level = Level(id: id, creator: creator, image: image, levelPredictions: levelPredictions)
+        return Level(id: id, creator: creator, image: image, levelPredictions: levelPredictions)
     }
 }
