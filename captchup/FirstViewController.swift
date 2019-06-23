@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class FirstViewController: UIViewController, UITableViewDataSource {
+class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,6 +19,7 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         getLevels()
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,6 +36,19 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         cell.levelImageView.contentMode = UIView.ContentMode.scaleAspectFill
         cell.levelImageView.clipsToBounds = true
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showLevel", sender: levels[indexPath.row])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLevel" {
+            if let nextViewController = segue.destination as? GameViewController {
+                guard let level = sender as? Level else { return }
+                nextViewController.level = level
+            }
+        }
     }
     
     func getLevels() {
