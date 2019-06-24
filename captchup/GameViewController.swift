@@ -62,16 +62,13 @@ class GameViewController: UIViewController {
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
                 switch response.result {
-                case.success(let data):
-                    guard let json = data as? [[String: Any]] else {
+                case.success:
+                    do {
+                        guard let data = response.data else { return }
+                        self.solvedPredictions = try JSONDecoder().decode([Prediction].self, from: data)
+                    } catch {
                         return
                     }
-                    self.solvedPredictions.append(contentsOf: json.compactMap({
-                        guard let prediction = Prediction.from(json: $0) else {
-                            return nil
-                        }
-                        return prediction
-                    }))
                     self.updatePredictionsOnView()
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)

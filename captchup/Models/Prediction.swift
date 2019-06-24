@@ -12,17 +12,6 @@ struct Prediction : Equatable, Codable {
     let id: Int
     let word: String
     
-    static func from(json: [String: Any]) -> Prediction? {
-        guard
-            let id = json["id"] as? Int,
-            let word = json["word"] as? String
-            
-            else {
-                return nil
-        }
-        return Prediction(id: id, word: word)
-    }
-    
     static func ==(prediction1: Prediction, prediction2: Prediction) -> Bool {
         return prediction1.id == prediction2.id
     }
