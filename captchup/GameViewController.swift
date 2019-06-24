@@ -31,13 +31,13 @@ class GameViewController: UIViewController {
     
     
     @IBAction func answerTextFieldOnExit(_ sender: Any) {
-        // add prediction to solved prediction if good answer
+        sendAnswer(answer: answerTextField.text!)
     }
     
     func updatePredictionsOnView() {
         if solvedPredictions.contains((level?.levelPredictions[0].prediction)!) {
             firstPredictionTextView.text = (level?.levelPredictions[0].prediction)?.word
-        } else {	
+        } else {
             firstPredictionTextView.text = "?"
         }
         if solvedPredictions.contains((level?.levelPredictions[1].prediction)!) {
@@ -75,11 +75,51 @@ class GameViewController: UIViewController {
                     self.updatePredictionsOnView()
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "Alert " + ApiManager.token!, style: .default)
+                    let OKAction = UIAlertAction(title: "OK", style: .default)
                     alert.addAction(OKAction)
                     self.present(alert, animated: true, completion: nil)
                 }
         }
+    }
+    
+    func sendAnswer(answer: String) {
+        let headers: HTTPHeaders = [
+            "Authorization": ApiManager.token!,
+            "Content-Type": "application/x-www-form-urlencoded"
+        ]
+        let url = ApiManager.apiUrl + "level/\(level!.id)/solve"
+        Alamofire.request(url, method: .post, parameters: ["answer": answer], encoding: URLEncoding.httpBody, headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseJSON { (response) in
+                switch response.result {
+                case.success(let data):
+                    guard let json = data as? [String: Any] else {
+                        return
+                    }
+                    let predictionJson = json["prediction"] as! [String: Any]
+                    let prediction = Prediction.from(json: predictionJson)
+                    self.processAnswerResult(prediction: prediction)
+                case .failure(let error):
+                    let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default)
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+        }
+        answerTextField.text = ""
+    }
+    
+    func processAnswerResult(prediction: Prediction?) {
+        guard prediction != nil else {
+            //TODO: tell user he has not solved any prediction
+            return
+        }
+        guard !solvedPredictions.contains(prediction!) else {
+            //TODO: tell user he has already solved this prediction
+            return
+        }
+        solvedPredictions.append(prediction!)
+        self.updatePredictionsOnView()
     }
     
     
