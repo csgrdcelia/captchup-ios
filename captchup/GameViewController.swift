@@ -92,13 +92,15 @@ class GameViewController: UIViewController {
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
                 switch response.result {
-                case.success(let data):
-                    guard let json = data as? [String: Any] else {
+                case.success:
+                    var levelAnswer: LevelAnswer
+                    do {
+                        guard let data = response.data else { return }
+                        levelAnswer = try JSONDecoder().decode(LevelAnswer.self, from: data)
+                    } catch {
                         return
                     }
-                    let predictionJson = json["prediction"] as! [String: Any]
-                    let prediction = Prediction.from(json: predictionJson)
-                    self.processAnswerResult(prediction: prediction)
+                    self.processAnswerResult(prediction: levelAnswer.prediction)
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default)
