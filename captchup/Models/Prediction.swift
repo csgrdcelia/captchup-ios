@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Prediction : Equatable {
+struct Prediction : Equatable, Codable {
     let id: Int
     let word: String
     

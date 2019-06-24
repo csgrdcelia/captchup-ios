@@ -60,16 +60,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
                 switch response.result {
-                case.success(let data):
-                    guard let json = data as? [[String: Any]] else {
+                case.success:
+                    do {
+                        guard let data = response.data else { return }
+                        self.levels = try JSONDecoder().decode([Level].self, from: data)
+                    } catch {
                         return
                     }
-                    self.levels.append(contentsOf: json.compactMap({
-                        guard let level = Level.from(json: $0) else {
-                            return nil
-                        }
-                        return level
-                    }))
                     self.tableView.reloadData()
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)

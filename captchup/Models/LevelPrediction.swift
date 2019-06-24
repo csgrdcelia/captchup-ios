@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LevelPrediction {
+struct LevelPrediction : Codable {
     let prediction: Prediction
     let pertinence: Double
 
