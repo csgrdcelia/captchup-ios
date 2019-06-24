@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Prediction {
+struct Prediction : Equatable {
     let id: Int
     let word: String
     
@@ -22,4 +22,10 @@ struct Prediction {
         }
         return Prediction(id: id, word: word)
     }
+    
+    static func ==(prediction1: Prediction, prediction2: Prediction) -> Bool {
+        return prediction1.id == prediction2.id
+    }
+    
+    
 }
