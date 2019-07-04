@@ -35,6 +35,12 @@ class LoginViewController: UIViewController {
                 .responseData { response in switch response.result {
                 case .success(_):
                     ApiManager.token = response.response?.allHeaderFields["Authorization"] as! String?
+                    do {
+                        guard let data = response.data else { return }
+                        ApiManager.user = try JSONDecoder().decode(User.self, from: data)
+                    } catch {
+                        return
+                    }
                     self.performSegue(withIdentifier: "showTabBar", sender: nil)
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
