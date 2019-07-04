@@ -12,14 +12,23 @@ import Alamofire
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stateSegmentedControl: UISegmentedControl!
     
     private var levels: [Level] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLevels()
+        getLevels(finished: false)
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        switch stateSegmentedControl.selectedSegmentIndex {
+        case 0: getLevels(finished: false)
+        case 1: getLevels(finished: true)
+        default: break;
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -51,12 +60,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func getLevels() {
+    func getLevels(finished: Bool) {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!,
             "Accept": "application/json"
         ]
-        Alamofire.request(ApiManager.apiUrl + "level/all", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
+        let apiUrl: String = ApiManager.apiUrl + "user/" + String(ApiManager.user!.id) + "/level/" + (finished ? "finished" : "unfinished")
+        Alamofire.request(apiUrl, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseJSON { (response) in
                 switch response.result {

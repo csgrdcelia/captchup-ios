@@ -95,6 +95,9 @@
                                     <segment title="Finished"/>
                                 </segments>
                                 <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="04G-zn-DIA"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IMs-sh-5wW">
                                 <rect key="frame" x="16" y="158" width="343" height="451"/>
@@ -140,6 +143,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Levels" image="icons8-open_box" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="stateSegmentedControl" destination="lqH-fU-Yya" id="Ybf-2W-IoP"/>
                         <outlet property="tableView" destination="IMs-sh-5wW" id="20f-U1-1mC"/>
                         <segue destination="3hq-uG-QmJ" kind="show" identifier="showLevel" id="FsR-Id-aqv"/>
                     </connections>
