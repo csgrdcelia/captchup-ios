@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stateSegmentedControl: UISegmentedControl!
