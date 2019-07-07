@@ -16,6 +16,7 @@
 		6D6F811D2279D1260052DAD9 /* captchupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6F811C2279D1260052DAD9 /* captchupTests.swift */; };
 		6DCB4C9E22BAE37200261215 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB4C9D22BAE37200261215 /* ApiManager.swift */; };
 		6DCB4CA222BAF0C200261215 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCB4CA122BAF0C200261215 /* TabBarController.swift */; };
+		6DE5AB9622D2660E0096A681 /* NewImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE5AB9522D2660E0096A681 /* NewImageViewController.swift */; };
 		6DE7E5ED22C1346000C99EA7 /* LevelAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7E5EC22C1346000C99EA7 /* LevelAnswer.swift */; };
 		6DE9323B22BAD72100AF51EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE9323A22BAD72100AF51EF /* LoginViewController.swift */; };
 		6DEC1DD322BF925600FA444A /* LevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC1DD222BF925600FA444A /* LevelTableViewCell.swift */; };
@@ -53,6 +54,7 @@
 		6D6F811E2279D1260052DAD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DCB4C9D22BAE37200261215 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		6DCB4CA122BAF0C200261215 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		6DE5AB9522D2660E0096A681 /* NewImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewImageViewController.swift; sourceTree = "<group>"; };
 		6DE7E5EC22C1346000C99EA7 /* LevelAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelAnswer.swift; sourceTree = "<group>"; };
 		6DE9323A22BAD72100AF51EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6DEC1DD222BF925600FA444A /* LevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				6DCB4CA122BAF0C200261215 /* TabBarController.swift */,
 				6DEC1DD222BF925600FA444A /* LevelTableViewCell.swift */,
 				6DEC1DD722BFA0EC00FA444A /* GameViewController.swift */,
+				6DE5AB9522D2660E0096A681 /* NewImageViewController.swift */,
 			);
 			path = captchup;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				6DEC7C9222BE9C26008C49AF /* BackendError.swift in Sources */,
 				6DEC7C8C22BE7F80008C49AF /* Level.swift in Sources */,
 				6DF5D32822BC252200C29229 /* Prediction.swift in Sources */,
+				6DE5AB9622D2660E0096A681 /* NewImageViewController.swift in Sources */,
 				6D6F81062279D1230052DAD9 /* AppDelegate.swift in Sources */,
 				6DE9323B22BAD72100AF51EF /* LoginViewController.swift in Sources */,
 				6DF5D32622BC23A700C29229 /* User.swift in Sources */,
