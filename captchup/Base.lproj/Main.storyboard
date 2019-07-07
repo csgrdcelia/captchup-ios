@@ -170,24 +170,32 @@
                                 <rect key="frame" x="133" y="548" width="109" height="30"/>
                                 <state key="normal" title="Pick your image"/>
                                 <connections>
-                                    <action selector="pickImageButton:" destination="MK6-CG-KWO" eventType="touchUpInside" id="yDp-bG-vbV"/>
+                                    <action selector="pickImageButton_OnClick:" destination="MK6-CG-KWO" eventType="touchUpInside" id="yDp-bG-vbV"/>
                                 </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXg-hU-57b">
+                                <rect key="frame" x="172" y="548" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3wL-mS-HMB" firstAttribute="trailing" secondItem="jUS-VM-sW3" secondAttribute="trailing" constant="133" id="Drn-3X-7Qn"/>
+                            <constraint firstItem="3wL-mS-HMB" firstAttribute="bottom" secondItem="EXg-hU-57b" secondAttribute="bottom" constant="40" id="Gvr-Ek-syO"/>
                             <constraint firstItem="cOj-l3-Hry" firstAttribute="top" secondItem="3wL-mS-HMB" secondAttribute="top" id="JCJ-C1-o26"/>
                             <constraint firstItem="3wL-mS-HMB" firstAttribute="bottom" secondItem="jUS-VM-sW3" secondAttribute="bottom" constant="40" id="TSd-Nn-XPE"/>
                             <constraint firstItem="jUS-VM-sW3" firstAttribute="leading" secondItem="3wL-mS-HMB" secondAttribute="leading" constant="133" id="Wdp-XB-tzI"/>
                             <constraint firstItem="cOj-l3-Hry" firstAttribute="leading" secondItem="3wL-mS-HMB" secondAttribute="leading" id="ctw-kj-CtP"/>
+                            <constraint firstItem="EXg-hU-57b" firstAttribute="leading" secondItem="3wL-mS-HMB" secondAttribute="leading" constant="172" id="kyR-C9-miN"/>
                             <constraint firstItem="3wL-mS-HMB" firstAttribute="trailing" secondItem="cOj-l3-Hry" secondAttribute="trailing" id="qtN-Er-wMS"/>
+                            <constraint firstItem="3wL-mS-HMB" firstAttribute="trailing" secondItem="EXg-hU-57b" secondAttribute="trailing" constant="173" id="sH6-CX-bO9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3wL-mS-HMB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New" image="icons8-plus_2_math" id="7dc-uT-oYm"/>
                     <connections>
                         <outlet property="imageView" destination="cOj-l3-Hry" id="XEQ-cs-tKC"/>
+                        <outlet property="pickImageButton" destination="jUS-VM-sW3" id="hoi-gM-Jmx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvv-HM-QX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
