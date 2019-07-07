@@ -176,6 +176,9 @@
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXg-hU-57b">
                                 <rect key="frame" x="172" y="548" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButton_OnCick:" destination="MK6-CG-KWO" eventType="touchUpInside" id="CQW-9v-D2y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,6 +199,8 @@
                     <connections>
                         <outlet property="imageView" destination="cOj-l3-Hry" id="XEQ-cs-tKC"/>
                         <outlet property="pickImageButton" destination="jUS-VM-sW3" id="hoi-gM-Jmx"/>
+                        <outlet property="playButton" destination="EXg-hU-57b" id="fd4-yG-ACE"/>
+                        <segue destination="3hq-uG-QmJ" kind="show" identifier="showLevel" id="xt7-NU-LCd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvv-HM-QX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -429,6 +434,6 @@
         <image name="robot" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gz2-me-ZR1"/>
+        <segue reference="xt7-NU-LCd"/>
     </inferredMetricsTieBreakers>
 </document>
