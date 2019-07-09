@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
                         guard let data = response.data else { return }
                         ApiManager.user = try JSONDecoder().decode(User.self, from: data)
                     } catch {
-                        return
+                        print("Can't retrieve user info")
                     }
                     self.performSegue(withIdentifier: "showTabBar", sender: nil)
                 case .failure(let error):
