@@ -27,6 +27,7 @@ class GameViewController: UIViewController {
         guard level != nil else { return }
         imageView.imageFromUrl(urlString: level!.image)
         getSolvedPredictions()
+        
     }
     
     
@@ -66,6 +67,9 @@ class GameViewController: UIViewController {
                     do {
                         guard let data = response.data else { return }
                         self.solvedPredictions = try JSONDecoder().decode([Prediction].self, from: data)
+                        if(self.solvedPredictions.count == 3) {
+                            self.answerTextField.isHidden = true
+                        }
                     } catch {
                         return
                     }
