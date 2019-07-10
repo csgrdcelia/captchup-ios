@@ -26,6 +26,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         guard level != nil else { return }
         imageView.imageFromUrl(urlString: level!.image)
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
         getSolvedPredictions()
         
     }
