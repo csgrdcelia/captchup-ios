@@ -17,7 +17,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var firstPredictionTextView: UILabel!
     @IBOutlet weak var secondPredictionTextView: UILabel!
     @IBOutlet weak var thirdPredictionTextViex: UILabel!
-    
+    @IBOutlet weak var creatorLabel: UILabel!
+    @IBOutlet weak var triesOnAverageLabel: UILabel!
     
     var level: Level?
     var solvedPredictions: [Prediction] = []
@@ -28,8 +29,9 @@ class GameViewController: UIViewController {
         imageView.imageFromUrl(urlString: level!.image)
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.clipsToBounds = true
+        creatorLabel.text = level?.creator.username
         getSolvedPredictions()
-        
+        getAverageNumberOfAnswers()
     }
     
     
@@ -125,6 +127,31 @@ class GameViewController: UIViewController {
         }
         solvedPredictions.append(prediction!)
         self.updatePredictionsOnView()
+    }
+    
+    func getAverageNumberOfAnswers() {
+        let headers: HTTPHeaders = [
+            "Authorization": ApiManager.token!
+        ]
+        let url = ApiManager.apiUrl + "statistic/getAverageNumberOfAnswersPerCompletedLevels/" + String(level!.id)
+        Alamofire.request(url, method: .get, parameters: nil,  headers: headers)
+            .validate(statusCode: 200..<300)
+            .responseString { (response) in
+                switch response.result {
+                case.success:
+                    guard let data = response.result.value else { return }
+                    if data.isEmpty {
+                        self.triesOnAverageLabel.text = "level never finished!"
+                    } else {
+                        self.triesOnAverageLabel.text = data + " tries on average"
+                    }
+                case .failure(let error):
+                    let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default)
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+        }
     }
     
     
