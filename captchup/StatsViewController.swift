@@ -30,12 +30,23 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callStats()
         if(segmentedControl.selectedSegmentIndex == 0) {
             displayUserStats()
         } else {
             displayGlobalStats()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userSolvedLevels = nil
+        userGoodAnswers = nil
+        userSentAnswers = nil
+        userCreatedLevels = nil
+        globalSolvedLevels = nil
+        globalGoodAnswers = nil
+        globalSentAnswers = nil
+        globalCreatedLevels = nil
+        viewDidLoad()
     }
     
     @IBAction func segmentedControl_ValueChanged(_ sender: Any) {
@@ -47,7 +58,7 @@ class StatsViewController: UIViewController {
     }
     
     
-    func callStats() {
+    func callUserStats() {
         getNumberOfSolvedLevels(userOnly: true)
         getGoodAnswersRate(userOnly: true)
         getNumberOfSentAnswers(userOnly: true)
@@ -57,6 +68,7 @@ class StatsViewController: UIViewController {
         getNumberOfSentAnswers(userOnly: false)
         getNumberOfCreatedLevels(userOnly: false)
     }
+    
     
     func displayUserStats() {
         guard userSolvedLevels != nil else {
@@ -127,10 +139,10 @@ class StatsViewController: UIViewController {
                     print("numbers of solved levels call : success. userOnly" + String(userOnly))
                     guard let data = response.result.value else { return }
                     if(userOnly) {
-                        self.userSolvedLevels = Int(data)
+                        self.userSolvedLevels = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayUserStats()
                     } else {
-                        self.globalSolvedLevels = Int(data)
+                        self.globalSolvedLevels = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayGlobalStats()
                     }
                 case .failure(let error):
@@ -156,10 +168,10 @@ class StatsViewController: UIViewController {
                     print("rate of good answers call : success. userOnly" + String(userOnly))
                     guard let data = response.result.value else { return }
                     if(userOnly) {
-                        self.userGoodAnswers = Double(data)
+                        self.userGoodAnswers = (data == "\"NaN\"" ? 0 : Double(data))
                         self.displayUserStats()
                     } else {
-                        self.globalGoodAnswers = Double(data)
+                        self.globalGoodAnswers = (data == "\"NaN\"" ? 0 : Double(data))
                         self.displayGlobalStats()
                     }
                 case .failure(let error):
@@ -185,10 +197,10 @@ class StatsViewController: UIViewController {
                     print("numbers of sent answers call : success. userOnly" + String(userOnly))
                     guard let data = response.result.value else { return }
                     if(userOnly) {
-                        self.userSentAnswers = Int(data)
+                        self.userSentAnswers = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayUserStats()
                     } else {
-                        self.globalSentAnswers = Int(data)
+                        self.globalSentAnswers = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayGlobalStats()
                     }
                 case .failure(let error):
@@ -214,10 +226,10 @@ class StatsViewController: UIViewController {
                     print("numbers of created levels call : success. userOnly" + String(userOnly))
                     guard let data = response.result.value else { return }
                     if(userOnly) {
-                        self.userCreatedLevels = Int(data)
+                        self.userCreatedLevels = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayUserStats()
                     } else {
-                        self.userCreatedLevels = Int(data)
+                        self.globalCreatedLevels = (data == "\"NaN\"" ? 0 : Int(data))
                         self.displayGlobalStats()
                     }
                 case .failure(let error):
