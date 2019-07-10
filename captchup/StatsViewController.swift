@@ -121,7 +121,7 @@ class StatsViewController: UIViewController {
         }
         print("finally displaying global values")
         solvedLevelsLabel.text = String(globalSolvedLevels!)
-        goodAnswersLabel.text = (String(globalGoodAnswers! * 100) + "%")
+        goodAnswersLabel.text = (String(format: "%.1f", globalGoodAnswers! * 100) + "%")
         sentAnswersLabel.text = String(globalSentAnswers!)
         createdLevelsLabel.text = String(globalCreatedLevels!)
     }

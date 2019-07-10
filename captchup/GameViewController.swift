@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var firstPredictionTextView: UILabel!
     @IBOutlet weak var secondPredictionTextView: UILabel!
-    @IBOutlet weak var thirdPredictionTextViex: UILabel!
+    @IBOutlet weak var thirdPredictionTextView: UILabel!
     @IBOutlet weak var creatorLabel: UILabel!
     @IBOutlet weak var triesOnAverageLabel: UILabel!
     
@@ -43,17 +43,17 @@ class GameViewController: UIViewController {
         if solvedPredictions.contains((level?.levelPredictions[0].prediction)!) {
             firstPredictionTextView.text = (level?.levelPredictions[0].prediction)?.word
         } else {
-            firstPredictionTextView.text = "?"
+            firstPredictionTextView.text = String(format: "%.1f", level!.levelPredictions[0].pertinence * 100) + "%"
         }
         if solvedPredictions.contains((level?.levelPredictions[1].prediction)!) {
             secondPredictionTextView.text = (level?.levelPredictions[1].prediction)?.word
         } else {
-            secondPredictionTextView.text = "?"
+            secondPredictionTextView.text = String(format: "%.1f", level!.levelPredictions[1].pertinence * 100) + "%"
         }
         if solvedPredictions.contains((level?.levelPredictions[2].prediction)!) {
-            thirdPredictionTextViex.text = (level?.levelPredictions[2].prediction)?.word
+            thirdPredictionTextView.text = (level?.levelPredictions[2].prediction)?.word
         } else {
-            thirdPredictionTextViex.text = "?"
+            thirdPredictionTextView.text = String(format: "%.1f", level!.levelPredictions[2].pertinence * 100) + "%"
         }
     }
     
@@ -118,13 +118,14 @@ class GameViewController: UIViewController {
     
     func processAnswerResult(prediction: Prediction?) {
         guard prediction != nil else {
-            //TODO: tell user he has not solved any prediction
+            self.showToast(controller: self, message: "Try again!", seconds: 1)
             return
         }
         guard !solvedPredictions.contains(prediction!) else {
-            //TODO: tell user he has already solved this prediction
+            self.showToast(controller: self, message: "Already found!", seconds: 1)
             return
         }
+        self.showToast(controller: self, message: "Correct!", seconds: 1)
         solvedPredictions.append(prediction!)
         self.updatePredictionsOnView()
     }
@@ -154,6 +155,17 @@ class GameViewController: UIViewController {
         }
     }
     
-    
+    func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+        
+        controller.present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
 
 }
