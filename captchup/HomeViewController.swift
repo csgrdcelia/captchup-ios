@@ -44,6 +44,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.levelImageView.imageFromUrl(urlString: levels[indexPath.row].image)
         cell.levelImageView.contentMode = UIView.ContentMode.scaleAspectFill
         cell.levelImageView.clipsToBounds = true
+        cell.usernameLabel.text = levels[indexPath.row].creator.username
         return cell
     }
     

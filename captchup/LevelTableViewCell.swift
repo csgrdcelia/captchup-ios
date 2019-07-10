@@ -12,6 +12,9 @@ class LevelTableViewCell: UITableViewCell {
     @IBOutlet weak var levelImageView: UIImageView!
     @IBOutlet weak var levelImageViewExplore: UIImageView!
     
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameLabelExplore: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

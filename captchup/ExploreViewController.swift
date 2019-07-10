@@ -36,6 +36,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.levelImageViewExplore.imageFromUrl(urlString: levels[indexPath.row].image)
         cell.levelImageViewExplore.contentMode = UIView.ContentMode.scaleAspectFill
         cell.levelImageViewExplore.clipsToBounds = true
+        cell.usernameLabelExplore.text = levels[indexPath.row].creator.username
         return cell
     }
     
