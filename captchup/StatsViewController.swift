@@ -85,7 +85,7 @@ class StatsViewController: UIViewController {
         }
         print("finally displaying user values")
         solvedLevelsLabel.text = String(userSolvedLevels!)
-        goodAnswersLabel.text = (String(userGoodAnswers! * 100) + "%")
+        goodAnswersLabel.text = (String(format:"%.1f",userGoodAnswers! * 100) + "%")
         sentAnswersLabel.text = String(userSentAnswers!)
         createdLevelsLabel.text = String(userCreatedLevels!)
     }
@@ -122,7 +122,7 @@ class StatsViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = ApiManager.apiUrl + "statistic/getNumberOfSolvedLevels" + (userOnly ? "ByUser" : "")
+        let url = userOnly ? ApiManager.apiUrl + "statistic/getNumberOfSolvedLevelsByUser" : ApiManager.apiUrl + "statistic/numberOfSolvedLevels"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in
@@ -151,7 +151,7 @@ class StatsViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = ApiManager.apiUrl + "statistic/getGoodAnswersRate" + (userOnly ? "ByUser" : "")
+        let url = ApiManager.apiUrl + "statistic/goodAnswersRate" + (userOnly ? "ByUser" : "")
         Alamofire.request(url, method: .get, parameters: nil, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in
@@ -180,7 +180,7 @@ class StatsViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = ApiManager.apiUrl + "statistic/getNumberOfLevelAnswer" + (userOnly ? "ByUser" : "")
+        let url = ApiManager.apiUrl + "statistic/numberOfLevelAnswer" + (userOnly ? "ByUser" : "")
         Alamofire.request(url, method: .get, parameters: nil, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in
@@ -209,7 +209,7 @@ class StatsViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = ApiManager.apiUrl + "statistic/getNumberOfCreatedLevels" + (userOnly ? "ByUser" : "")
+        let url = ApiManager.apiUrl + "statistic/numberOfCreatedLevels" + (userOnly ? "ByUser" : "")
         Alamofire.request(url, method: .get, parameters: nil,  headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in

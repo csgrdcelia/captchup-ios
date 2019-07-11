@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
             let parameters: Parameters = [ "username": usernameTextField.text ?? "", "password" : passwordTextField.text ?? "" ]
             Alamofire.request(ApiManager.apiUrl + "login", method: .post, parameters: parameters, encoding: JSONEncoding.default)
                 .validate(statusCode: 200..<300)
-                .responseData { response in switch response.result {
+                .responseJSON { response in switch response.result {
                 case .success(_):
                     ApiManager.token = response.response?.allHeaderFields["Authorization"] as! String?
                     do {

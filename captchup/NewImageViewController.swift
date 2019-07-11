@@ -11,8 +11,12 @@ class NewImageViewController: UIViewController, UINavigationControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        displayLevelIsNotUpload()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     @IBAction func pickImageButton_OnClick(_ sender: Any) {
@@ -100,6 +104,11 @@ class NewImageViewController: UIViewController, UINavigationControllerDelegate, 
     func displayLevelIsUpload() {
         pickImageButton.isHidden = true
         playButton.isHidden = false
+    }
+    
+    func displayLevelIsNotUpload() {
+        pickImageButton.isHidden = false
+        playButton.isHidden = true
     }
     
     

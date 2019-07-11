@@ -126,7 +126,7 @@ class GameViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = ApiManager.apiUrl + "statistic/getAverageNumberOfAnswersPerCompletedLevels/" + String(level!.id)
+        let url = ApiManager.apiUrl + "statistic/averageNumberOfAnswersPerCompletedLevels/" + String(level!.id)
         Alamofire.request(url, method: .get, parameters: nil,  headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in
