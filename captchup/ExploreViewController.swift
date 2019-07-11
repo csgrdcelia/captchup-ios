@@ -15,6 +15,10 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

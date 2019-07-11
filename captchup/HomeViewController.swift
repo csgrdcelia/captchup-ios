@@ -10,9 +10,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLevels(finished: false)
+        getLevels(finished: stateSegmentedControl.selectedSegmentIndex == 0 ? false : true)
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: Any) {

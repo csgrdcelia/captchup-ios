@@ -119,6 +119,9 @@ class GameViewController: UIViewController {
         }
         self.showToast(controller: self, message: "Correct!", seconds: 1)
         solvedPredictions.append(prediction!)
+        if(solvedPredictions.count == 3) {
+            answerTextField.isHidden = true
+        }
         self.updatePredictionsOnView()
     }
     
