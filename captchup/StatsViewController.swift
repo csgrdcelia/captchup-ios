@@ -122,7 +122,7 @@ class StatsViewController: UIViewController {
         let headers: HTTPHeaders = [
             "Authorization": ApiManager.token!
         ]
-        let url = userOnly ? ApiManager.apiUrl + "statistic/getNumberOfSolvedLevelsByUser" : ApiManager.apiUrl + "statistic/numberOfSolvedLevels"
+        let url = ApiManager.apiUrl + "statistic/numberOfSolvedLevels" + (userOnly ? "ByUser" : "")
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers)
             .validate(statusCode: 200..<300)
             .responseString { (response) in

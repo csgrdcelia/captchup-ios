@@ -65,7 +65,7 @@ class ExploreViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.tableView.reloadData()
                 case .failure(let error):
                     let alert = UIAlertController(title: "Alert", message: error.localizedDescription, preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "Alert " + ApiManager.token!, style: .default)
+                    let OKAction = UIAlertAction(title: "OK", style: .default)
                     alert.addAction(OKAction)
                     self.present(alert, animated: true, completion: nil)
                 }
