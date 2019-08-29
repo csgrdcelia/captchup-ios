@@ -15,8 +15,11 @@ On the game screen the player can guess the difficulty of the current level by l
 <img src="/captchup/Assets.xcassets/game_screen.PNG" width=210>
 <img src="/captchup/Assets.xcassets/stats_screen.JPG" width=210>
 
-## Specs
-All the logic is managed in the backend, which represents an other school project : the development of an API with Spring Boot, hosted on a cloud provider, that must use an external API, ... 
+### Challenges
+Xcode can be pretty slow on an OSX vm! This has negatively affected the project - I would have liked to do a better UI but it was very time-consuming.
+
+### Specs
+All the logic is managed in the backend, which represents another school project : the development of an API with Spring Boot, hosted on a cloud provider, that must use an external API, ... 
 See [backend project](https://github.com/csgrdcelia/captchup-springbackend)
 
 ## Dev
